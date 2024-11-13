@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1731340340 source:c:\users\ons\desktop\enicar\1ère année\semestre 1\programmation\gestion\main.c
+	<stdio.h>
+	<conio.h>
+	<stdlib.h>
+	"struc.h"
+	"struc.cpp"
+
+1731430386 c:\users\ons\desktop\enicar\1ère année\semestre 1\programmation\gestion\struc.h
+
+1731431088 source:c:\users\ons\desktop\enicar\1ère année\semestre 1\programmation\gestion\struc.cpp
+	<stdio.h>
+	<conio.h>
+	<stdlib.h>
+	"struc.h"
+
+1731431088 c:\users\ons\desktop\enicar\1ère année\semestre 1\programmation\gestion\struc.cpp
+	<stdio.h>
+	<conio.h>
+	<stdlib.h>
+	"struc.h"
+
