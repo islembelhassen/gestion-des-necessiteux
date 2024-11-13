@@ -346,12 +346,13 @@ void ajouterNecissiteux(FOYER* foyer,int nf)
 CHAMBRE remplissage_chambre()
 {
     CHAMBRE ch;
-    printf("\n Donner le numero de la chambre");
+    printf("\n Donner le numero de la chambre: ");
     scanf("%d",&ch.numeroChambre);
-    printf("\n Donner la superficie de la chambre");
+    printf("\n Donner la superficie de la chambre: ");
     scanf("%f",&ch.superficie);
-    printf("\n Donner le nombre de necessiteux");
+    printf("\n Donner le nombre de necessiteux: ");
     scanf("%d",&ch.nombrePersonnes);
+    ch.necessiteux=(NECESSITEUX*) malloc(ch.nombrePersonnes*sizeof(NECESSITEUX));
     remplissage_tabnecessiteux(ch.necessiteux,ch.nombrePersonnes);
     return ch;
 }
@@ -366,14 +367,14 @@ void ajouterChambre(FOYER* foyer,int nf){
             (foyer+i)->nombreChambres++;
             int nc=(foyer+i)->nombreChambres;
             (foyer+i)->chambres=(CHAMBRE*) realloc((foyer+i)->chambres,nc*sizeof(CHAMBRE));
-            //CHAMBRE* newChambres = realloc((foyer+i)->chambres, nc * sizeof(CHAMBRE));
             if (!(foyer+i)->chambres) exit (-8);
-            *(((foyer+i)->chambres))=remplissage_chambre();
+            *(((foyer+i)->chambres)+nc-1)=remplissage_chambre();
             return;
         }
     }
     printf("foyer introuvable !!\n");
 }
+
 FOYER remplissage_foyer()
 {
     FOYER f;
@@ -381,18 +382,17 @@ FOYER remplissage_foyer()
     scanf("%d",&f.codeFoyer);
     printf("\n Donner le nombre de chambres");
     scanf("%d",&f.nombreChambres);
+    f.chambres=(CHAMBRE*) malloc(f.nombreChambres*sizeof(CHAMBRE));
     remplissage_tabchambres(f.chambres,f.nombreChambres);
     return f;
 
 }
 void ajouterFoyer(FOYER** foyer,int* nf){
-    *(nf)++;
+    (*nf)++;
 
     *foyer=(FOYER*) realloc(*foyer,(*nf)*sizeof(FOYER));
     if(!*foyer) exit(-7);
-    int l=(*(nf))-1;
-    *(*foyer-1)=remplissage_foyer();
-    return;
+    *((*foyer)+(*nf) - 1) = remplissage_foyer();
 
 }
 
