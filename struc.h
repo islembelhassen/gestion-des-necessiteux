@@ -92,4 +92,10 @@ void ajouterChambre(FOYER*,int);
 void ajouterFoyer(FOYER**,int*);
 
 void menu();
+
+
+void ecrireUnNecessiteuxDansFichier(FILE*,NECESSITEUX*);
+void ecrireUneChambreDansFichier(FILE*,CHAMBRE*);
+void remplirFichierFoyer(FILE*,FILE*);
+void ecrireUnFoyerDansFichier(FILE*,FOYER);
 #endif // STRUC_H_INCLUDED

@@ -378,12 +378,18 @@ void ajouterChambre(FOYER* foyer,int nf){
 FOYER remplissage_foyer()
 {
     FOYER f;
-    printf("\n Donner code foyer");
+    printf("\n Donner code foyer: ");
     scanf("%d",&f.codeFoyer);
-    printf("\n Donner le nombre de chambres");
-    scanf("%d",&f.nombreChambres);
-    f.chambres=(CHAMBRE*) malloc(f.nombreChambres*sizeof(CHAMBRE));
-    remplissage_tabchambres(f.chambres,f.nombreChambres);
+
+    if(f.codeFoyer!=0)
+    {
+        printf("\n Donner le nombre de chambres");
+        scanf("%d",&f.nombreChambres);
+        f.chambres=(CHAMBRE*) malloc(f.nombreChambres*sizeof(CHAMBRE));
+        remplissage_tabchambres(f.chambres,f.nombreChambres);
+
+    }
+
     return f;
 
 }
@@ -418,3 +424,52 @@ void menu()
 }
 
 
+
+void ecrireUnNecessiteuxDansFichier(FILE* f,NECESSITEUX* ne)
+{
+    fwrite(ne,sizeof(int),4,f);
+    fwrite(&ne->motif,sizeof(char),1,f);
+    fwrite(&ne->repas,sizeof(int),2,f);
+
+}
+
+void ecrireUneChambreDansFichier(FILE* f, CHAMBRE* ch)
+{
+    fwrite(&ch->numeroChambre,sizeof(int),1,f);
+    fwrite(&ch->superficie,sizeof(float),1,f);
+    fwrite(&ch->nombrePersonnes,sizeof(int),1,f);
+
+     for(int i=0 ; i<ch->nombrePersonnes;i++) ecrireUnNecessiteuxDansFichier(f,ch->necessiteux+i);
+
+
+}
+
+void ecrireUnFoyerDansFichier(FILE* f,FOYER foy)
+{
+
+    fwrite(&foy,sizeof(int),2,f);
+
+    for(int i=0 ; i<foy.nombreChambres;i++) ecrireUneChambreDansFichier(f,foy.chambres+i);
+
+}
+
+
+void remplirFichierFoyer(FILE* f , FILE* fi)
+{
+
+    int x;
+    FOYER foy;
+
+    do
+    {
+        foy=remplissage_foyer();
+        if(foy.codeFoyer==0) break;
+
+        x=ftell(f);
+        fwrite(&x,sizeof(int),1,fi);
+        ecrireUnFoyerDansFichier(f,foy);
+    }
+    while(foy.codeFoyer!=0);
+
+
+}

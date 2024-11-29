@@ -2,41 +2,71 @@
 #include<conio.h>
 #include <stdlib.h>
 #include"struc.h"
+#include <unistd.h>
+#include <string.h>
 #include"struc.cpp"
-
 
 void main()
 {
+    system("color f0");
 
-    FOYER *f;
-    int nf;
-    printf("\n--------------------- REMPLISSAGE -------------------------\n");
-    printf("\n--------- FOYERS ---------\n");
-    printf("Donner le nombre de foyers \n");
-    scanf("%d",&nf);
-    f=allocation_foyer(nf);
-    remplissage_tabfoyers(f,nf);
 
-    FOURNISSEUR *fournisseur;
-    int nF;
-    printf("\n--------- FOURNISSEURS ---------\n");
-    printf("donner nombre fournisseurs:\n");
-    scanf("%d",&nF);
-    fournisseur=allocation_fournisseur(nF);
-    remplissage_tabfournisseur(nF,fournisseur);
+    char pathFoyer[PATH_MAX],pathDonation[PATH_MAX],pathFournisseur[PATH_MAX],pathIndex[PATH_MAX];
+    FILE *fichierFoyer,*fichierFournisseur,*fichierDonation,*fichierIndex;
 
-    DONATION *donation;
-    int nD;
-    printf("\n--------- DONATIONS ---------\n");
-    printf("donner nombre des donation:\n");
-    scanf("%d",&nD);
-    donation= allocation_donation(nD);
-    remplissage_tabdonation(nD,donation);
+    if (getcwd(pathFoyer, sizeof(pathFoyer)) != NULL && getcwd(pathDonation, sizeof(pathDonation)) != NULL && getcwd(pathFournisseur, sizeof(pathFournisseur)) != NULL
+        &&getcwd(pathIndex, sizeof(pathIndex)) != NULL ) {
+        strcat(pathFoyer,"/foyer");
+        strcat(pathDonation,"/donation");
+        strcat(pathFournisseur,"/fournisseur");
+        strcat(pathIndex,"/index");
 
-    RESULTAT **r;
-    r=allocation_resultat();
-    remplissage_resultat(r,donation,nD);
+        fichierFoyer=fopen(pathFoyer,"wb+");
+        fichierFournisseur=fopen(pathDonation,"wb+");
+        fichierDonation=fopen(pathFournisseur,"wb+");
+        fichierIndex=fopen(pathIndex,"wb+");
+    }
+    else exit(00);
 
+
+
+
+
+
+       /* FOYER *f;
+        int nf;
+        printf("\n--------------------- REMPLISSAGE -------------------------\n");
+        printf("\n--------- FOYERS ---------\n");
+        printf("Donner le nombre de foyers \n");
+        scanf("%d",&nf);
+        f=allocation_foyer(nf);
+        remplissage_tabfoyers(f,nf);
+
+        FOURNISSEUR *fournisseur;
+        int nF;
+        printf("\n--------- FOURNISSEURS ---------\n");
+        printf("donner nombre fournisseurs:\n");
+        scanf("%d",&nF);
+        fournisseur=allocation_fournisseur(nF);
+        remplissage_tabfournisseur(nF,fournisseur);
+
+        DONATION *donation;
+        int nD;
+        printf("\n--------- DONATIONS ---------\n");
+        printf("donner nombre des donation:\n");
+        scanf("%d",&nD);
+        donation= allocation_donation(nD);
+        remplissage_tabdonation(nD,donation);
+        RESULTAT **r;
+        r=allocation_resultat();
+        remplissage_resultat(r,donation,nD);*/
+
+
+        remplirFichierFoyer(fichierFoyer,fichierIndex);
+
+
+
+/*
 
     int codeFoyer;
 
@@ -71,7 +101,7 @@ void main()
 
 
 
-
+*/
 
 
 

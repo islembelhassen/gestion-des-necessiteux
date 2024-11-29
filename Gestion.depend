@@ -20,22 +20,24 @@
 	<stdlib.h>
 	"struc.h"
 
-1731523073 source:c:\users\islem\desktop\gestion\main.c
+1732890703 source:c:\users\islem\desktop\gestion\main.c
 	<stdio.h>
 	<conio.h>
 	<stdlib.h>
 	"struc.h"
+	<unistd.h>
+	<string.h>
 	"struc.cpp"
 
-1731514287 c:\users\islem\desktop\gestion\struc.h
+1732889404 c:\users\islem\desktop\gestion\struc.h
 
-1731527530 c:\users\islem\desktop\gestion\struc.cpp
+1732890286 c:\users\islem\desktop\gestion\struc.cpp
 	<stdio.h>
 	<conio.h>
 	<stdlib.h>
 	"struc.h"
 
-1731527530 source:c:\users\islem\desktop\gestion\struc.cpp
+1732890286 source:c:\users\islem\desktop\gestion\struc.cpp
 	<stdio.h>
 	<conio.h>
 	<stdlib.h>
