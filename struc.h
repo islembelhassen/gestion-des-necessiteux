@@ -107,8 +107,8 @@ void  remplirFichierDonation(FILE*);
 DONATION saisirDonation();
 void ecrireUneDonationDansFichier(FILE*,DONATION);
 
-NECESSITEUX lireUnNecessiteuxDuFichier(FILE*, NECESSITEUX*);
-CHAMBRE lireUneChambreDuFichier(FILE*, CHAMBRE*);
+void lireUnNecessiteuxDuFichier(FILE*, NECESSITEUX*);
+void lireUneChambreDuFichier(FILE*, CHAMBRE*);
 FOYER lireUnFoyerDuFichier(FILE*);
 void afficherFichierFoyer(FILE*, FILE*);
 

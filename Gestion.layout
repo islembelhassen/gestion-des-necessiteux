@@ -2,19 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2260" topLine="55" />
-		</Cursor>
-	</File>
 	<File name="struc.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3267" topLine="94" />
+			<Cursor1 position="3044" topLine="84" />
 		</Cursor>
 	</File>
-	<File name="struc.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="struc.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="17513" topLine="160" />
+			<Cursor1 position="15989" topLine="132" />
 		</Cursor>
 		<Folding>
 			<Collapse line="6" />
@@ -57,10 +52,13 @@
 			<Collapse line="513" />
 			<Collapse line="527" />
 			<Collapse line="534" />
-			<Collapse line="549" />
-			<Collapse line="560" />
-			<Collapse line="574" />
-			<Collapse line="587" />
+			<Collapse line="605" />
+			<Collapse line="619" />
 		</Folding>
+	</File>
+	<File name="main.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2154" topLine="55" />
+		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

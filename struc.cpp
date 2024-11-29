@@ -546,27 +546,25 @@ void  remplirFichierDonation(FILE* f)
 
 
 
-NECESSITEUX lireUnNecessiteuxDuFichier(FILE* f, NECESSITEUX* nec)
+void lireUnNecessiteuxDuFichier(FILE* f, NECESSITEUX* nc)
 {
-    NECESSITEUX nc;
-    fread(&nc,sizeof(int),4,f);
-    fread(&nc.motif,sizeof(char),1,f);
-    fread(&nc.repas,sizeof(REPAS),1,f);
-    return nc;
+    fread(nc,sizeof(int),4,f);
+    fread(&nc->motif,sizeof(char),1,f);
+    fread(&nc->repas,sizeof(REPAS),1,f);
 }
 
 
 
-CHAMBRE lireUneChambreDuFichier(FILE* f, CHAMBRE* chambres)
+void lireUneChambreDuFichier(FILE* f, CHAMBRE* ch)
 {
-    CHAMBRE ch;
-    fread(&ch.numeroChambre, sizeof(int),1,f);
-    fread(&ch.superficie, sizeof(float),1,f);
-    fread(&ch.nombrePersonnes,sizeof(int),1,f);
-    ch.necessiteux=allocation_necessiteux(ch.nombrePersonnes);
-    for(int i=0; i<ch.nombrePersonnes; i++)
-        lireUnNecessiteuxDuFichier(f,ch.necessiteux+i);
-    return ch;
+
+    fread(&ch->numeroChambre, sizeof(int),1,f);
+    fread(&ch->superficie, sizeof(float),1,f);
+    fread(&ch->nombrePersonnes,sizeof(int),1,f);
+    ch->necessiteux=allocation_necessiteux(ch->nombrePersonnes);
+    for(int i=0; i<ch->nombrePersonnes; i++)
+        lireUnNecessiteuxDuFichier(f,ch->necessiteux+i);
+
 }
 
 

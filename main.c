@@ -65,6 +65,7 @@ void main()
         remplirFichierFoyer(fichierFoyer,fichierIndex);
         remplirFichierFournisseur(fichierFournisseur);
         remplirFichierDonation(fichierDonation);
+
         afficherFichierFournisseur(fichierFournisseur);
         afficherFichierDonation(fichierDonation);
         afficherFichierFoyer(fichierFoyer,fichierIndex);
