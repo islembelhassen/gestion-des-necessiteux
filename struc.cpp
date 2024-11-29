@@ -433,6 +433,7 @@ void ecrireUnNecessiteuxDansFichier(FILE* f,NECESSITEUX* ne)
 
 }
 
+
 void ecrireUneChambreDansFichier(FILE* f, CHAMBRE* ch)
 {
     fwrite(&ch->numeroChambre,sizeof(int),1,f);
@@ -444,6 +445,7 @@ void ecrireUneChambreDansFichier(FILE* f, CHAMBRE* ch)
 
 }
 
+
 void ecrireUnFoyerDansFichier(FILE* f,FOYER foy)
 {
 
@@ -452,7 +454,6 @@ void ecrireUnFoyerDansFichier(FILE* f,FOYER foy)
     for(int i=0 ; i<foy.nombreChambres;i++) ecrireUneChambreDansFichier(f,foy.chambres+i);
 
 }
-
 
 void remplirFichierFoyer(FILE* f , FILE* fi)
 {
@@ -472,4 +473,159 @@ void remplirFichierFoyer(FILE* f , FILE* fi)
     while(foy.codeFoyer!=0);
 
 
+}
+
+
+FOURNISSEUR saisirFournisseur()
+{
+
+    FOURNISSEUR fourn;
+    printf("\n Donner le code du fournisseur:");
+    scanf("%d",&fourn.codeFournisseur);
+    if(fourn.codeFournisseur!=0)
+    {
+        printf("\n Donner les prix des plats achetes:");
+        scanf("%f",&fourn.prix);
+    }
+    return fourn;
+}
+
+void ecrireUnFournisseurDansFichier(FILE* f,FOURNISSEUR fourn)
+{
+    fwrite(&fourn.codeFournisseur, sizeof(int),1,f);
+    fwrite(&fourn.prix, sizeof(float),1,f);
+}
+
+void remplirFichierFournisseur(FILE* f)
+{
+    FOURNISSEUR fourn;
+    do
+    {
+        fourn=saisirFournisseur();
+        if(fourn.codeFournisseur!=0)
+            ecrireUnFournisseurDansFichier(f,fourn);
+        if(fourn.codeFournisseur==0) break;
+    }
+    while (fourn.codeFournisseur!=0);
+}
+
+
+DONATION saisirDonation()
+{
+    DONATION don;
+    printf("\n Donner l'id du donnateur:");
+    scanf("%d",&don.idDonneur);
+    if(don.idDonneur!=0)
+    {
+        printf("\n Donner le montant de donation:");
+        scanf("%f",&don.montant);
+    }
+    return don;
+}
+
+
+void ecrireUneDonationDansFichier(FILE* f, DONATION don)
+{
+    fwrite(&don.idDonneur,sizeof(int),1,f);
+    fwrite(&don.montant,sizeof(float),1,f);
+}
+
+
+void  remplirFichierDonation(FILE* f)
+{
+    DONATION don;
+    do
+    {
+        don=saisirDonation();
+        if(don.idDonneur!=0)
+            ecrireUneDonationDansFichier(f,don);
+        if(don.idDonneur==0) break;
+    }
+    while (don.idDonneur!=0);
+}
+
+
+
+NECESSITEUX lireUnNecessiteuxDuFichier(FILE* f, NECESSITEUX* nec)
+{
+    NECESSITEUX nc;
+    fread(&nc,sizeof(int),4,f);
+    fread(&nc.motif,sizeof(char),1,f);
+    fread(&nc.repas,sizeof(REPAS),1,f);
+    return nc;
+}
+
+
+
+CHAMBRE lireUneChambreDuFichier(FILE* f, CHAMBRE* chambres)
+{
+    CHAMBRE ch;
+    fread(&ch.numeroChambre, sizeof(int),1,f);
+    fread(&ch.superficie, sizeof(float),1,f);
+    fread(&ch.nombrePersonnes,sizeof(int),1,f);
+    ch.necessiteux=allocation_necessiteux(ch.nombrePersonnes);
+    for(int i=0; i<ch.nombrePersonnes; i++)
+        lireUnNecessiteuxDuFichier(f,ch.necessiteux+i);
+    return ch;
+}
+
+
+
+FOYER lireUnFoyerDuFichier(FILE* f)
+{
+    FOYER foy;
+    fread(&foy,sizeof(int),2,f);
+    foy.chambres=allocation_chambre(foy.nombreChambres);
+    for(int i=0; i<foy.nombreChambres;i++)
+        lireUneChambreDuFichier(f,foy.chambres+i);
+    return foy;
+}
+
+
+
+
+void afficherFichierFoyer(FILE* f, FILE* fi)
+{
+    int x;
+    FOYER foy;
+    rewind(fi); rewind(f);
+    while(1)
+    {
+        fread(&x,sizeof(int),1,fi);
+        if(feof(fi)) break;
+        fseek(f,x,0);
+        foy=lireUnFoyerDuFichier(f);
+        affichage_tabfoyers(&foy,1);
+    }
+
+}
+
+
+
+
+
+void afficherFichierFournisseur(FILE* f)
+{
+    FOURNISSEUR fourn;
+    rewind(f);
+    while(1)
+    {
+        fread(&fourn,sizeof(int),2,f);
+        if(feof(f)) break;
+        affichage_tabfournisseur(&fourn,1);
+    }
+}
+
+
+
+void afficherFichierDonation(FILE* f)
+{
+    DONATION don;
+    rewind(f);
+    while(1)
+    {
+        fread(&don,sizeof(int),2,f);
+        if(feof(f)) break;
+        affichage_tabdonation(&don,1);
+    }
 }

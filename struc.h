@@ -98,4 +98,21 @@ void ecrireUnNecessiteuxDansFichier(FILE*,NECESSITEUX*);
 void ecrireUneChambreDansFichier(FILE*,CHAMBRE*);
 void remplirFichierFoyer(FILE*,FILE*);
 void ecrireUnFoyerDansFichier(FILE*,FOYER);
+
+void remplirFichierFournisseur(FILE*);
+FOURNISSEUR saisirFournisseur();
+void ecrireUnFournisseurDansFichier(FILE*,FOURNISSEUR);
+
+void  remplirFichierDonation(FILE*);
+DONATION saisirDonation();
+void ecrireUneDonationDansFichier(FILE*,DONATION);
+
+NECESSITEUX lireUnNecessiteuxDuFichier(FILE*, NECESSITEUX*);
+CHAMBRE lireUneChambreDuFichier(FILE*, CHAMBRE*);
+FOYER lireUnFoyerDuFichier(FILE*);
+void afficherFichierFoyer(FILE*, FILE*);
+
+void afficherFichierFournisseur(FILE*);
+void afficherFichierDonation(FILE*);
+
 #endif // STRUC_H_INCLUDED
