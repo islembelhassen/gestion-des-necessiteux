@@ -11,10 +11,10 @@ void main()
     system("color f0");
 
 
-    char pathFoyer[PATH_MAX],pathDonation[PATH_MAX],pathFournisseur[PATH_MAX],pathIndex[PATH_MAX];
+    /*char pathFoyer[PATH_MAX],pathDonation[PATH_MAX],pathFournisseur[PATH_MAX],pathIndex[PATH_MAX];
     FILE *fichierFoyer,*fichierFournisseur,*fichierDonation,*fichierIndex;
 
-    if (getcwd(pathFoyer, sizeof(pathFoyer)) != NULL && getcwd(pathDonation, sizeof(pathDonation)) != NULL && getcwd(pathFournisseur, sizeof(pathFournisseur)) != NULL
+    if(getcwd(pathFoyer,sizeof(pathFoyer))!= NULL && getcwd(pathDonation, sizeof(pathDonation))!=NULL && getcwd(pathFournisseur,sizeof(pathFournisseur))!=NULL
         &&getcwd(pathIndex, sizeof(pathIndex)) != NULL ) {
         strcat(pathFoyer,"/foyer");
         strcat(pathDonation,"/donation");
@@ -26,14 +26,14 @@ void main()
         fichierDonation=fopen(pathFournisseur,"wb+");
         fichierIndex=fopen(pathIndex,"wb+");
     }
-    else exit(00);
+    else exit(00);*/
 
 
 
 
 
 
-       /* FOYER *f;
+        FOYER *f;
         int nf;
         printf("\n--------------------- REMPLISSAGE -------------------------\n");
         printf("\n--------- FOYERS ---------\n");
@@ -59,21 +59,21 @@ void main()
         remplissage_tabdonation(nD,donation);
         RESULTAT **r;
         r=allocation_resultat();
-        remplissage_resultat(r,donation,nD);*/
+        remplissage_resultat(r,donation,nD);
 
 
-        remplirFichierFoyer(fichierFoyer,fichierIndex);
+        /*remplirFichierFoyer(fichierFoyer,fichierIndex);
         remplirFichierFournisseur(fichierFournisseur);
         remplirFichierDonation(fichierDonation);
 
         afficherFichierFournisseur(fichierFournisseur);
         afficherFichierDonation(fichierDonation);
-        afficherFichierFoyer(fichierFoyer,fichierIndex);
+        afficherFichierFoyer(fichierFoyer,fichierIndex);*/
 
 
 
 
-/*
+
 
     int codeFoyer;
 
@@ -93,10 +93,14 @@ void main()
                 case 5: affichage_tabfournisseur(fournisseur,nF); break;
                 case 6: affichage_tabdonation(donation,nD); break;
                 case 7: affichage_resultat(r,donation); break;
-                case 8: printf ("\n Donner le code du foyer"); scanf("%d", &codeFoyer); int ncpf=nombreNecessiteuxParFoyer(codeFoyer,f,nf); printf("\n %d", ncpf); break;
+                case 8: printf ("\n Donner le code du foyer");
+                        scanf("%d", &codeFoyer);
+                        int ncpf=nombreNecessiteuxParFoyer(codeFoyer,f,nf);
+                        printf("\n %d", ncpf); break;
                 case 9: repartitionNecessiteuxSelonAge(f,nf); break;
                 case 10: printf("%.2f dt",total_donations(donation,nD)); break;
                 case 11: meilleur_donateur(donation,nD); break;
+                case 12: printf("\n Les depenses totales valent %.2f dt",total_depenses(fournisseur,nF)); break;
                 case 0:  printf("Quitter le programme...\n"); return 0;
                 default: printf("\n Veuillez faire un choix valide!"); break;
 
@@ -105,13 +109,5 @@ void main()
     }
     while(choix!=0);
 
-
-
-
-*/
-
-
-
     return 0;
-
 }

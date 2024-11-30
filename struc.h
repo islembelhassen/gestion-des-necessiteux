@@ -87,6 +87,8 @@ float total_donations(DONATION*,int);
 
 void meilleur_donateur(DONATION*, int);
 
+float total_depenses(FOURNISSEUR*,int);
+
 void ajouterNecissiteux(FOYER*,int);
 void ajouterChambre(FOYER*,int);
 void ajouterFoyer(FOYER**,int*);

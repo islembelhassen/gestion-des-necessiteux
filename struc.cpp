@@ -27,6 +27,8 @@ NECESSITEUX* allocation_necessiteux(int nbn)
     return necessiteux;
 }
 
+
+
 REPAS remplissage_repas()
 {
     printf("\n--------- REPAS ---------\n");
@@ -44,6 +46,8 @@ void affichage_repas(REPAS repas)
     printf("\n le code de repas: %d",repas.codeRepas);
     printf("\n l'heure de servir: %d",(repas.heure));
 }
+
+
 
 void remplissage_tabnecessiteux(NECESSITEUX* necessiteux, int nbn)
 {
@@ -107,6 +111,8 @@ void affichage_tabchambres(CHAMBRE* chambres, int nbc)
         }
 }
 
+
+
 void remplissage_tabfoyers(FOYER* f, int nf)
 {
     for (int k=0;k<nf;k++)
@@ -129,6 +135,8 @@ void affichage_tabfoyers(FOYER* f, int nf)
         affichage_tabchambres((f+k)->chambres, (f+k)->nombreChambres);
     }
 }
+
+
 
 FOURNISSEUR* allocation_fournisseur(int nF)
 {
@@ -157,12 +165,15 @@ void affichage_tabfournisseur(FOURNISSEUR* fournisseur,int nF)
         printf("\n code fournisseur: %d ",(fournisseur+i)->codeFournisseur );
         printf("\n prix des plats achetes: %.2f dt ",(fournisseur+i)->prix);
     }
-    }
+}
 
-DONATION* allocation_donation(int nF)
+
+
+
+DONATION* allocation_donation(int nD)
 {
     DONATION* donation;
-    donation=(DONATION*) malloc(nF*sizeof(DONATION));
+    donation=(DONATION*) malloc(nD*sizeof(DONATION));
     if(!donation) exit(-5);
     return donation;
 }
@@ -186,6 +197,8 @@ void affichage_tabdonation(DONATION* donation, int nD)
         printf("\n donner montant de donation: %.2f dt",(donation+i)->montant);
     }
 }
+
+
 
 void tri_donateurs(DONATION* donation, int nD)
 {
@@ -237,6 +250,8 @@ void affichage_resultat(RESULTAT** r, DONATION* donation)
         printf("\n Le montant qu'il a donne est %.2f dt", (*(r+i))->montant);
     }
 }
+
+
 
  int nombreNecessiteuxParFoyer(int codeFoyer,FOYER* listeDesFoyes,int nombreFoyer)
  {
@@ -308,6 +323,16 @@ void meilleur_donateur(DONATION* donation, int nD)
     printf("\n La somme avec laquelle il a contribue est %.2f dt",donation->montant);
 }
 
+float total_depenses(FOURNISSEUR* fournisseur, int nF)
+{
+    float s=0.0;
+    for(int i=0;i<nF;i++)
+        s=s+(fournisseur+i)->prix;
+    return s;
+}
+
+
+
 void ajouterNecissiteux(FOYER* foyer,int nf)
 {
     int codeFoyer,codeChambre;
@@ -343,6 +368,8 @@ void ajouterNecissiteux(FOYER* foyer,int nf)
     printf("foyer ou chambre introuvable !!\n");
 }
 
+
+
 CHAMBRE remplissage_chambre()
 {
     CHAMBRE ch;
@@ -375,6 +402,8 @@ void ajouterChambre(FOYER* foyer,int nf){
     printf("foyer introuvable !!\n");
 }
 
+
+
 FOYER remplissage_foyer()
 {
     FOYER f;
@@ -402,6 +431,8 @@ void ajouterFoyer(FOYER** foyer,int* nf){
 
 }
 
+
+
 void menu()
 {
     printf("\n------------------------- MENU -------------------------\n");
@@ -415,8 +446,9 @@ void menu()
     printf("7.Affichage des 3 premiers donateurs\n");
     printf("8.Affichage du nombre des necessiteux par foyer\n");
     printf("9.Affichage de la repartition des necessiteux selon l'age \n");
-    printf("10:Afficher la somme totale des donations \n");
-    printf("11:Afficher le meilleur donateur \n");
+    printf("10.Afficher la somme totale des donations \n");
+    printf("11.Afficher le meilleur donateur \n");
+    printf("12.Afficher le total des depenses \n");
     printf("0. Quitter\n");
     printf("--------------------------------------------------------\n");
     printf("Votre choix : ");
